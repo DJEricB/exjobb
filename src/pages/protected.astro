@@ -17,34 +17,44 @@ Astro.response.headers.set("X-Content-Type-Options", "nosniff");
 
 <Base title="Skyddad version">
     <section class="card safe">
-        <h2>Login-simulering</h2><form
+        <h2>Login-simulering</h2>
+        <form
             method="post"
             action="/api/login-protected"
         >
             <button>Skapa skyddad sessionscookie</button>
-        </form><p class="muted">Cookie: SameSite=Strict och HttpOnly.</p>
+        </form>
+        <p class="muted">Cookie: SameSite=Strict och HttpOnly.</p>
     </section>
     <section class="card safe">
-        <h2>XSS-kommentar</h2><form
+        <h2>XSS-kommentar</h2>
+        <form
             method="post"
             action="/api/comment-protected"
         >
-            <textarea name="comment" placeholder="HTML visas som text, inte kod"
-            ></textarea><input type="hidden" name="csrf" value={token} /><br
-            /><button>Spara kommentar</button>
-        </form><h3>Renderade kommentarer</h3><pre
-            class="log">{comments || 'Inga kommentarer ännu.'}</pre>
+            <textarea name="comment" placeholder="HTML visas som text, inte kod"/>
+            <input type="hidden" name="csrf" value={token} />
+            <br/>
+            <button>Spara kommentar</button>
+        </form>
+        <h3>Renderade kommentarer</h3>
+        <pre
+            class="log">{comments || 'Inga kommentarer ännu.'}
+        </pre>
     </section>
     <section class="card safe">
-        <h2>Autentiserad åtgärd</h2><form
+        <h2>Autentiserad åtgärd</h2>
+        <form
             method="post"
             action="/api/transfer-protected"
         >
-            <input name="amount" value="100" /><input
+            <input name="amount" value="100" />
+            <input
                 type="hidden"
                 name="csrf"
                 value={token}
-            /><button>Utför åtgärd med CSRF-token</button>
+            />
+            <button>Utför åtgärd med CSRF-token</button>
         </form>
     </section>
 </Base>

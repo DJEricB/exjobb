@@ -6,22 +6,28 @@ import Base from "../layouts/Base.astro";
             begränsningar hos säkerhetsmekanismer mot XSS, CSRF och Clickjacking"
 >
     <section class="card">
-        <h2>Mål med webbplatsen</h2><p>
+        <h2>Mål med webbplatsen</h2>
+        <p>
             Den här webbplatsen är en egen, kontrollerad labbmiljö.
             Den innehåller en medvetet sårbar version och en skyddad version för att jämföra attackutfall före och efter införda säkerhetsmekanismer.
         </p>
     </section>
     <section class="grid">
         <div class="card danger">
-            <h2>Sårbar version</h2><p>
+            <h2>Sårbar version</h2>
+            <p>
                 Ingen CSP, osäker HTML-rendering, cookie utan SameSite-skydd och
                 åtgärder utan CSRF-token.
-            </p><a href="/vulnerable">Öppna sårbar version</a>
-        </div><div class="card safe">
-            <h2>Skyddad version</h2><p>
+            </p>
+            <a href="/vulnerable">Öppna sårbar version</a>
+        </div>
+        <div class="card safe">
+            <h2>Skyddad version</h2>
+            <p>
                 CSP, X-Frame-Options, frame-ancestors, SameSite-cookie och
                 CSRF-token.
-            </p><a href="/protected">Öppna skyddad version</a>
+            </p>
+            <a href="/protected">Öppna skyddad version</a>
         </div>
     </section>
 </Base>

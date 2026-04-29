@@ -7,12 +7,18 @@ import Base from "../../layouts/Base.astro";
         <p>
             Sårbar version bör kunna bäddas in. Skyddad version ska blockeras av
             X-Frame-Options och CSP frame-ancestors.
-        </p><h2>Sårbar iframe</h2><div class="overlay-demo">
-            <iframe src="/vulnerable"></iframe><div class="fake-layer">
+        </p>
+        <h2>Sårbar iframe</h2>
+        <div class="overlay-demo">
+            <iframe src="/vulnerable"></iframe>
+            <div class="fake-layer">
                 <span>Falskt gränssnitt ovanpå iframe</span>
             </div>
-        </div><h2>Skyddad iframe</h2><div class="overlay-demo">
-            <iframe src="/protected"></iframe><div class="fake-layer">
+        </div>
+        <h2>Skyddad iframe</h2>
+        <div class="overlay-demo">
+            <iframe src="/protected"></iframe>
+            <div class="fake-layer">
                 <span>Denna bör inte kunna laddas</span>
             </div>
         </div>
