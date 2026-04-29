@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base title="CSRF-test">
+    <section class="card">
+        <p>
+            Den här sidan simulerar en extern sida som försöker skicka en
+            förfalskad POST mot labbplatsen. Testa först efter att du har skapat
+            session på sårbar/skyddad version.
+        </p><form method="post" action="/api/transfer-vulnerable">
+            <input type="hidden" name="amount" value="9999" /><button
+                >Skicka CSRF mot sårbar endpoint</button>
+        </form><br /><form method="post" action="/api/transfer-protected">
+            <input type="hidden" name="amount" value="9999" /><button
+                >Skicka CSRF mot skyddad endpoint utan token</button>
+        </form>
+    </section>
+</Base>

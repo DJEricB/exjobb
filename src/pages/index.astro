@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Base from "../layouts/Base.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Base title="Astro Security Lab: XSS, CSRF och Clickjacking">
+    <section class="card">
+        <h2>Syfte</h2><p>
+            Den här webbplatsen är avsedd för en egen, kontrollerad labbmiljö.
+            Den innehåller en medvetet sårbar version och en skyddad version så
+            att ni kan jämföra resultat före och efter säkerhetsmekanismer.
+        </p>
+    </section>
+    <section class="grid">
+        <div class="card danger">
+            <h2>Sårbar version</h2><p>
+                Ingen CSP, osäker HTML-rendering, cookie utan SameSite-skydd och
+                åtgärder utan CSRF-token.
+            </p><a href="/vulnerable">Öppna sårbar version</a>
+        </div><div class="card safe">
+            <h2>Skyddad version</h2><p>
+                CSP, X-Frame-Options, frame-ancestors, SameSite-cookie och
+                CSRF-token.
+            </p><a href="/protected">Öppna skyddad version</a>
+        </div>
+    </section>
+    <section class="card">
+        <h2>Mätning</h2><p>
+            Använd Mozilla Observatory, PageSpeed Insights och de manuella
+            testsidorna i menyn. Anteckna utfallet binärt: 0 = attacken
+            lyckades, 1 = attacken blockerades.
+        </p>
+    </section>
+</Base>

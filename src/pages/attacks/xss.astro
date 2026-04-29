@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="XSS-test">
+<section class="card"><p>Klistra in denna payload i kommentarsfältet på sårbar version. På skyddad version ska den visas som text eller blockeras av CSP.</p><pre class="log">&lt;img src=x onerror="document.body.insertAdjacentHTML('afterbegin','&lt;h1 style=color:red&gt;XSS kördes&lt;/h1&gt;')"&gt;</pre><p><a href="/vulnerable">Testa sårbar version</a> · <a href="/protected">Testa skyddad version</a></p></section>
+</Base>

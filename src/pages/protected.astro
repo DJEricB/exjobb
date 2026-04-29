@@ -1,0 +1,50 @@
+---
+import Base from "../layouts/Base.astro";
+const token = crypto.randomUUID();
+Astro.cookies.set("csrf_token", token, {
+    path: "/",
+    sameSite: "strict",
+    httpOnly: true,
+});
+const comments = Astro.cookies.get("safe_comments")?.value ?? "";
+Astro.response.headers.set(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+);
+Astro.response.headers.set("X-Frame-Options", "DENY");
+Astro.response.headers.set("X-Content-Type-Options", "nosniff");
+---
+
+<Base title="Skyddad version">
+    <section class="card safe">
+        <h2>Login-simulering</h2><form
+            method="post"
+            action="/api/login-protected"
+        >
+            <button>Skapa skyddad sessionscookie</button>
+        </form><p class="muted">Cookie: SameSite=Strict och HttpOnly.</p>
+    </section>
+    <section class="card safe">
+        <h2>XSS-kommentar</h2><form
+            method="post"
+            action="/api/comment-protected"
+        >
+            <textarea name="comment" placeholder="HTML visas som text, inte kod"
+            ></textarea><input type="hidden" name="csrf" value={token} /><br
+            /><button>Spara kommentar</button>
+        </form><h3>Renderade kommentarer</h3><pre
+            class="log">{comments || 'Inga kommentarer ännu.'}</pre>
+    </section>
+    <section class="card safe">
+        <h2>Autentiserad åtgärd</h2><form
+            method="post"
+            action="/api/transfer-protected"
+        >
+            <input name="amount" value="100" /><input
+                type="hidden"
+                name="csrf"
+                value={token}
+            /><button>Utför åtgärd med CSRF-token</button>
+        </form>
+    </section>
+</Base>

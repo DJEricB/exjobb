@@ -1,0 +1,9 @@
+---
+import Base from '../layouts/Base.astro';
+const comments = Astro.cookies.get('comments')?.value ?? '';
+---
+<Base title="Sårbar version">
+<section class="card danger"><h2>Login-simulering</h2><form method="post" action="/api/login-vulnerable"><button>Skapa osäker sessionscookie</button></form><p class="muted">Cookie: lab_session utan SameSite/HttpOnly/Secure i utvecklingsläge.</p></section>
+<section class="card danger"><h2>XSS-kommentar</h2><form method="post" action="/api/comment-vulnerable"><textarea name="comment" placeholder="Skriv en kommentar"></textarea><br/><button>Spara kommentar</button></form><h3>Renderade kommentarer</h3><div set:html={comments || '<p>Inga kommentarer ännu.</p>'}></div></section>
+<section class="card danger"><h2>Autentiserad åtgärd</h2><form method="post" action="/api/transfer-vulnerable"><input name="amount" value="100"/><button>Utför åtgärd utan CSRF-token</button></form></section>
+</Base>

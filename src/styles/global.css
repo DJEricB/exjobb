@@ -1,0 +1,131 @@
+:root {
+    font-family: Inter, system-ui, sans-serif;
+    color: #172033;
+    background: #f6f8fb
+}
+
+body {
+    margin: 0
+}
+
+.wrap {
+    max-width: 1050px;
+    margin: auto;
+    padding: 32px
+}
+
+nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0
+}
+
+a {
+    color: #155eef;
+    font-weight: 700
+}
+
+.card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 22px;
+    margin: 18px 0;
+    box-shadow: 0 8px 30px #0001
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: #eef4ff;
+    color: #155eef;
+    font-weight: 800
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1
+}
+
+textarea {
+    width: 100%;
+    min-height: 90px
+}
+
+button {
+    background: #155eef;
+    color: white;
+    border: 0;
+    font-weight: 800;
+    cursor: pointer
+}
+
+.danger {
+    background: #fff1f2;
+    border-color: #fecdd3
+}
+
+.safe {
+    background: #f0fdf4;
+    border-color: #bbf7d0
+}
+
+.log {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 12px;
+    padding: 14px;
+    overflow: auto
+}
+
+.muted {
+    color: #64748b
+}
+
+.big-button {
+    font-size: 22px;
+    padding: 24px 36px
+}
+
+.overlay-demo {
+    position: relative;
+    height: 220px;
+    border: 2px dashed #94a3b8;
+    border-radius: 16px;
+    overflow: hidden
+}
+
+.overlay-demo iframe {
+    width: 100%;
+    height: 220px;
+    border: 0;
+    opacity: .35
+}
+
+.fake-layer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    pointer-events: none
+}
+
+.fake-layer span {
+    background: #111827;
+    color: white;
+    padding: 16px 22px;
+    border-radius: 14px;
+    font-weight: 900
+}
