@@ -38,9 +38,7 @@ Astro.response.headers.set("X-Content-Type-Options", "nosniff");
             <button>Spara kommentar</button>
         </form>
         <h3>Renderade kommentarer</h3>
-        <pre
-            class="log">{comments || 'Inga kommentarer ännu.'}
-        </pre>
+        <div set:html={comments || "<p>Inga kommentarer ännu.</p>"}/>
     </section>
     <section class="card safe">
         <h2>Autentiserad åtgärd</h2>
