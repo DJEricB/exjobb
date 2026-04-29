@@ -1,0 +1,25 @@
+---
+deployment:
+    tasks:
+        - export DEPLOYPATH=$HOME/domains/exjobb.bjurvald.se
+        - export VENV="source /home/nalsogat/nodevenv/domains/exjobb.bjurvald.se/24/bin/activate"
+
+        # 1. Copy files
+        - /bin/cp -au * $DEPLOYPATH
+        - cd $DEPLOYPATH
+
+        - echo "--- Starting Deployment at $(date) ---" > deploy_log.txt
+
+        # 2. Install Dependencies (Using Node 24)
+        - echo "Installing..." >> deploy_log.txt
+        - $VENV && npm ci >> deploy_log.txt 2>&1
+
+        # 3. Build Astro (Using Node 24)
+        - echo "Building..." >> deploy_log.txt
+        - export NODE_OPTIONS="--max-old-space-size=2560"
+        - $VENV && npm run build >> deploy_log.txt 2>&1
+
+        # 4. Cleanup and Restart
+        - /bin/mkdir -p tmp
+        - /bin/touch tmp/restart.txt
+        - echo "Deployment Complete." >> deploy_log.txt
