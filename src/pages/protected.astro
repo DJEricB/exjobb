@@ -9,7 +9,7 @@ Astro.cookies.set("csrf_token", token, {
 const comments = Astro.cookies.get("safe_comments")?.value ?? "";
 Astro.response.headers.set(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; style-src 'self' 'unsafe-inline'",
+    "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; ",
 );
 Astro.response.headers.set("X-Frame-Options", "DENY");
 Astro.response.headers.set("X-Content-Type-Options", "nosniff");
